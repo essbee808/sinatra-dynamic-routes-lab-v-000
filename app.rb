@@ -1,6 +1,10 @@
 require_relative 'config/environment'
 require 'pry'
+<<<<<<< HEAD
 require 'uri'
+=======
+require 'erb'
+>>>>>>> 391f0c265f3465ffee42e81e9f1172b4f998747c
 
 class App < Sinatra::Base
   #accepts the name and renders name backwards
@@ -14,11 +18,19 @@ class App < Sinatra::Base
     "#{@number*@number}"
   end
 
+<<<<<<< HEAD
   get "/say/:number/" + URI.encode(":phrase") do
     @number = params[:number].to_i
     @phrase = URI.decode(params[:phrase])
     @total = @phrase * @number
     "#{@total}"
+=======
+  get "/say/:number" + ERB::Util.url_encode("/:phrase") do
+    binding.pry
+    @number = params[:number].to_i
+    @phrase = params[:phrase]
+    "#{@number}"
+>>>>>>> 391f0c265f3465ffee42e81e9f1172b4f998747c
   end
 
   get '/say/:word1/:word2/:word3/:word4/:word5' do
